@@ -2,7 +2,7 @@
 
 ### Poc details 
 
-Open Poc_details.md file having all information releated poc that will be develop into ext_js.
+Open <a href="Poc_details.md">Poc_details.md</a> file having all information releated poc that will be develop into ext_js.
 
 ### Executing on server
 
