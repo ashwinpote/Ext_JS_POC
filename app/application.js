@@ -1,3 +1,17 @@
+  // Ext.application({
+  //   name  : 'Poc',
+  //   controllers: ['Main'],
+  //     launch: function () {
+  //       Ext.widget('bookslist', {
+  //         width : 500,
+  //         height: 300,
+  //         renderTo: 'output'
+  //       });
+  //     }
+  //   }
+  // );
+  
+
 Ext.onReady(function () {
   Ext.define('Poc.model.Book', {
     extend: 'Ext.data.Model',
