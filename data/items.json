@@ -1,0 +1,85 @@
+{
+  "text": ".",
+  "children": [{
+    "name": "Layout & Description",
+    "children": [
+      {
+        "item_id": 0,
+        "name": "Absolute",
+        "description": "This layout allows to position the items using XY coordinates in the container.",
+        "leaf": true
+      },
+      {
+        "item_id": 1,
+        "name": "Border",
+        "description": "In this layout various panels are nested and separated by borders.",
+        "leaf": true
+      },
+      {
+        "item_id": 2,
+        "name": "Card(TabPanel)",
+        "description": "This layout arranges different components in tab fashion. Tabs will be displayed on top of the container.Every time only one tab is visible and each tab is considered as different component.",
+        "leaf": true
+      },
+      {
+        "item_id": 3,
+        "name": "Card(Wizard)",
+        "description": "In this layout every time the elements comes for full container space. There would be a bottom tool bar in the wizard for navigation.",
+        "leaf": true
+      },
+      {
+        "item_id": 4,
+        "name": "vBox",
+        "description": "This layout allows the element to be distributed in the vertical manner. This is one of the mostly used layout.",
+        "leaf": true
+      },
+      {
+        "item_id": 5,
+        "name": "hBox",
+        "description": "This layout allows the element to be distributed in the horizontal manner.",
+        "leaf": true
+      },
+    ]
+  },
+  {
+    "name": "Components",
+    "children": [
+      {
+        "item_id": 0,
+        "name": "Grid",
+        "description": "TGrid component can be used to show the data in the tabular format.",
+        "leaf": true
+      },
+      {
+        "item_id": 1,
+        "name": "Form",
+        "description": "Form widget is to get the data from the user.",
+        "leaf": true
+      },
+      {
+        "item_id": 2,
+        "name": "Chart",
+        "description": "Charts are used to reprent data in pictorial format.",
+        "leaf": true
+      },
+      {
+        "item_id": 3,
+        "name": "HTML editor",
+        "description": "HTML Editor is one of the very useful UI component which is used for styling the data which user enters in terms of fonts, color, size etc.",
+        "leaf": true
+      },
+      {
+        "item_id": 4,
+        "name": "Progress bar",
+        "description": "To show the progress of the backend work.",
+        "leaf": true
+      },
+      {
+        "item_id": 5,
+        "name": "Window",
+        "description": "This UI widget is to create a window which should pop up when any event occurs.",
+        "leaf": true
+      },
+    ]}
+  ]
+}
