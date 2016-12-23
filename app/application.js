@@ -13,6 +13,10 @@
   
 
 Ext.onReady(function () {
+  var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
+      clicksToMoveEditor: 1,
+      autoCancel: false
+  });
   Ext.define('Poc.model.Book', {
     extend: 'Ext.data.Model',
     fields: [
@@ -51,10 +55,10 @@ Ext.onReady(function () {
         iconCls : 'income-add'
       }];
       this.columns = [
-        { header: 'Payee', dataIndex: 'payee', flex: 1 },
-        { header: 'Category', dataIndex: 'category' },
-        { header: 'Amount', dataIndex: 'amount' , width: 60 },
-        { header: 'Id', dataIndex: 'id', width: 80 },
+        { header: 'Payee', dataIndex: 'payee', flex: 1, editor: true},
+        { header: 'Category', dataIndex: 'category', flex: 1, editor: true },
+        { header: 'Amount', dataIndex: 'amount' , width: 150, editor: true },
+        { header: 'Id', dataIndex: 'id', width: 80, editor: true },
         { header: 'Action', width: 50,
           renderer: function (v, m, r) {
             var id = Ext.id();
@@ -93,7 +97,8 @@ Ext.onReady(function () {
         }
       ];
       this.callParent(arguments);
-    }
+    },
+    plugins: [rowEditing]
   });
  
     Ext.define('Poc.view.BooksForm', {
@@ -166,9 +171,9 @@ Ext.onReady(function () {
         'bookslist > toolbar > button[action=add]': {
           click: this.showAddForm
         },
-        'bookslist': {
-          itemdblclick: this.onRowdblclick
-        },
+        // 'bookslist': {
+        //   itemdblclick: this.onRowdblclick
+        // },
         'booksform button[action=add]': {
           click: this.doAddBook
         }
@@ -211,10 +216,23 @@ Ext.onReady(function () {
     name  : 'Poc',
     controllers: ['Books'],
       launch: function () {
-        Ext.widget('bookslist', {
-          width : 500,
-          height: 300,
-          renderTo: 'output'
+        Ext.create('Ext.container.Viewport', {
+            layout: 'border',
+            defaults: {
+               collapsible: true,
+               split: true
+            },
+            items: [{
+               title: 'Panel1',
+               region:'west',
+               html: 'This is Panel 1',
+               width: '20%'
+            },{
+               title: 'Panel2',
+               region:'center',
+               xtype: 'bookslist',
+               collapsible: false
+            }]
         });
       }
     }
