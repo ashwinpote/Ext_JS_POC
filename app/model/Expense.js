@@ -1,4 +1,4 @@
- Ext.define('Poc.model.Income', {
+ Ext.define('Poc.model.Expense', {
     extend: 'Ext.data.Model',
     fields: [
       {name: 'payee', type: 'string'},

@@ -1,55 +1,24 @@
-  Ext.define('Poc.controller.Books', {
-    extend  : 'Ext.app.Controller',
-    stores  : ['Books'],
-    views   : ['BooksList', 'BooksForm'],
-    refs    : [{
-      ref   : 'formWindow',
-      xtype : 'booksform',
-      selector: 'booksform',
-      autoCreate: true
-    }],
-    init: function () {
-      this.control({
-        'bookslist > toolbar > button[action=add]': {
-          click: this.showAddForm
-        },
-        'bookslist': {
-          itemdblclick: this.onRowdblclick
-        },
-        'booksform button[action=add]': {
-          click: this.doAddBook
-        }
-      });
-    },
-    onRowdblclick: function(me, record, item, index) {
-      var win = this.getFormWindow();
-      win.setTitle('Edit Income');
-      win.setAction('edit');
-      win.setRecordIndex(index);
-      win.down('form').getForm().setValues(record.getData());
-      win.show();
-    },
-    showAddForm: function () {
-      var win = this.getFormWindow();
-      win.setTitle('Add Income');
-      win.setAction('add');
-      win.down('form').getForm().reset();
-      win.show();
-    },
-    doAddBook: function () {
-      var win = this.getFormWindow();
-      var store = this.getBooksStore();
-      var values = win.down('form').getValues();
-      
-      var action = win.getAction();
-      var book = Ext.create('Poc.model.Book', values);
-      if(action == 'edit') {
-        store.removeAt(win.getRecordIndex());
-        store.insert(win.getRecordIndex(), book);  
-      }
-      else {
-        store.add(book);
-      }
-      win.close();
-    }
-  });
+Ext.define('Poc.controller.Main', {
+	extend: 'Ext.app.Controller',
+	stores: ['Incomes'],
+  // Attach model classes to this controller
+  models: ['Income'],
+  // ..and last but not least - the view classes
+  //views: ['incomesList', 'incomesForm'],
+	refs: [
+		{
+			ref: 'cards',
+			selector: 'viewport > #cards'
+		}
+	],
+	init: function () {
+		this.control({
+			'viewport > #menu button': {
+				click: function (button) {
+					console.log(button);
+					this.getCards().getLayout().setActiveItem(button.action);
+				}
+			}
+		});
+	}
+});

@@ -1,6 +1,6 @@
-  Ext.define('Poc.store.Incomes', {
+  Ext.define('Poc.store.Expenses', {
     extend  : 'Ext.data.Store',
-    model   : 'Poc.model.Income',
+    model   : 'Poc.model.Expense',
     fields  : ['payee', 'category','amount', 'id'],
     data    : [
       { payee: 'Ashwin Pote', 

@@ -1,11 +1,11 @@
-  Ext.define('Poc.view.BooksList', {
+  Ext.define('Poc.view.ExpensesList', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.bookslist',
-    title: 'Income List',
-    store: 'Books',
+    alias: 'widget.expenseslist',
+    title: 'Expense List',
+    store: 'Expenses',
     initComponent: function () {
       this.tbar = [{
-        text    : 'Add Income',
+        text    : 'Add Expense',
         action  : 'add',
         iconCls : 'income-add'
       }];
@@ -26,7 +26,7 @@
                 listeners : {
                   afterrender: function (me) { 
                     me.getEl().on('click', function() {
-                      var grid = Ext.ComponentQuery.query('bookslist')[0];
+                      var grid = Ext.ComponentQuery.query('expenseslist')[0];
                       if (grid) {
                         var sm = grid.getSelectionModel();
                         var rs = sm.getSelection();
@@ -54,58 +54,3 @@
       this.callParent(arguments);
     }
   });
-
-  Ext.define('Poc.view.BooksForm', {
-      extend  : 'Ext.window.Window',
-      alias   : 'widget.booksform',
-      title   : 'Add Income',
-      width   : 350,
-      layout  : 'fit',
-      resizable: false,
-      closeAction: 'hide',
-      modal   : true,
-      config  : {
-        recordIndex : 0,
-        action : ''
-      },
-      items   : [{
-        xtype : 'form',
-        layout: 'anchor',
-        bodyStyle: {
-          background: 'none',
-          padding: '10px',
-          border: '0'
-        },
-        defaults: {
-          xtype : 'textfield',
-          anchor: '100%'
-        },
-        items : [{
-          name  : 'payee',
-          fieldLabel: 'Payee'
-        },{
-          name: 'category',
-          fieldLabel: 'Category'
-        },{
-          name: 'amount',
-          fieldLabel: 'Amount'
-        },{
-          name: 'id',
-          fieldLabel: 'Id'
-        }]
-      }],
-      buttons: [{
-        text: 'OK',
-        action: 'add'
-      },{
-        text    : 'Reset',
-        handler : function () { 
-          this.up('window').down('form').getForm().reset(); 
-        }
-      },{
-        text   : 'Cancel',
-        handler: function () { 
-          this.up('window').close();
-        }
-      }]
-    });
