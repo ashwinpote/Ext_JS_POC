@@ -1,10 +1,7 @@
   Ext.define('Poc.controller.Incomes', {
-    extend  : 'Ext.app.Controller',
-    stores  : ['Incomes'],
-    views   : ['IncomesList', 'IncomesForm'],
-    refs    : [{
-      ref   : 'formWindow',
-      xtype : 'incomesform',
+    refs: [{
+      ref: 'formWindow',
+      xtype: 'incomesform',
       selector: 'incomesform',
       autoCreate: true
     }],
@@ -21,7 +18,7 @@
         }
       });
     },
-    onRowdblclick: function(me, record, item, index) {
+    onRowdblclick: function (me, record, item, index) {
       var win = this.getFormWindow();
       win.setTitle('Edit Income');
       win.setAction('edit');
@@ -40,14 +37,13 @@
       var win = this.getFormWindow();
       var store = this.getIncomesStore();
       var values = win.down('form').getValues();
-      
+
       var action = win.getAction();
       var book = Ext.create('Poc.model.Income', values);
-      if(action == 'edit') {
+      if (action == 'edit') {
         store.removeAt(win.getRecordIndex());
-        store.insert(win.getRecordIndex(), book);  
-      }
-      else {
+        store.insert(win.getRecordIndex(), book);
+      } else {
         store.add(book);
       }
       win.close();
